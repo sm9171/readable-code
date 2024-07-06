@@ -2,6 +2,9 @@ package cleancode.minesweeper.asis.io;
 
 import cleancode.minesweeper.asis.GameBoard;
 import cleancode.minesweeper.asis.GameException;
+import cleancode.minesweeper.asis.cell.CellSnapshot;
+import cleancode.minesweeper.asis.io.sign.*;
+import cleancode.minesweeper.asis.position.CellPosition;
 
 import java.util.List;
 import java.util.Objects;
@@ -17,14 +20,17 @@ public class ConsoleOutputHandler implements OutputHandler {
 	}
 
 	@Override
-	public void showBoard(final GameBoard gameBoard) {
-		String alphabets = generateColAlphabets(gameBoard);
+	public void showBoard(final GameBoard board) {
+		String alphabets = generateColAlphabets(board);
 		System.out.println("    " + alphabets);
 
-		for (int row = 0; row < gameBoard.getRowSize(); row++) {
+		for (int row = 0; row < board.getRowSize(); row++) {
 			System.out.printf("%2d  ", row + 1);
-			for (int col = 0; col < gameBoard.getColSize(); col++) {
-				System.out.print(gameBoard.getSign(row, col) + " ");
+			for (int col = 0; col < board.getColSize(); col++) {
+				CellPosition cellPosition = CellPosition.of(row, col);
+				CellSnapshot snapshot = board.getSnapshot(cellPosition);
+				String cellSign = CellSignProvider.findCellSignFrom(snapshot);
+				System.out.print(cellSign + " ");
 			}
 			System.out.println();
 		}
