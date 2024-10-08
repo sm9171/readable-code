@@ -27,8 +27,9 @@ public class ConsoleInputHandler implements InputHandler{
     @Override
     public CellPosition getCellPositionFromUser() {
         String userInput = SCANNER.nextLine();
-        int colIndex = BoardIndexConverter.getSelectedColIndex(userInput);
+
         int rowIndex = BoardIndexConverter.getSelectedRowIndex(userInput);
+        int colIndex = BoardIndexConverter.getSelectedColIndex(userInput);
         return CellPosition.of(rowIndex, colIndex);
     }
 }
