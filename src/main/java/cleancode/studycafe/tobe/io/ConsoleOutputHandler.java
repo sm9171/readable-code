@@ -2,8 +2,7 @@ package cleancode.studycafe.tobe.io;
 
 import cleancode.studycafe.tobe.model.StudyCafeLockerPass;
 import cleancode.studycafe.tobe.model.StudyCafePass;
-
-import java.util.List;
+import cleancode.studycafe.tobe.model.StudyCafePasses;
 
 public class ConsoleOutputHandler implements OutputHandler {
     @Override
@@ -25,7 +24,7 @@ public class ConsoleOutputHandler implements OutputHandler {
     }
 
     @Override
-    public void showPassListForSelection(List<StudyCafePass> passes) {
+    public void showPassListForSelection(StudyCafePasses passes) {
         System.out.println();
         System.out.println("이용권 목록");
         for (int index = 0; index < passes.size(); index++) {

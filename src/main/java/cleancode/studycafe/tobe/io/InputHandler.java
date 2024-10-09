@@ -2,13 +2,12 @@ package cleancode.studycafe.tobe.io;
 
 import cleancode.studycafe.tobe.model.StudyCafePass;
 import cleancode.studycafe.tobe.model.StudyCafePassType;
-
-import java.util.List;
+import cleancode.studycafe.tobe.model.StudyCafePasses;
 
 public interface InputHandler {
     StudyCafePassType getPassTypeSelectingUserAction();
 
-    StudyCafePass getSelectPass(List<StudyCafePass> passes);
+    StudyCafePass getSelectPass(StudyCafePasses passes);
 
     boolean getLockerSelection();
 }

@@ -3,8 +3,8 @@ package cleancode.studycafe.tobe.io;
 import cleancode.studycafe.tobe.exception.AppException;
 import cleancode.studycafe.tobe.model.StudyCafePass;
 import cleancode.studycafe.tobe.model.StudyCafePassType;
+import cleancode.studycafe.tobe.model.StudyCafePasses;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleInputHandler implements InputHandler {
@@ -27,7 +27,7 @@ public class ConsoleInputHandler implements InputHandler {
     }
 
     @Override
-    public StudyCafePass getSelectPass(List<StudyCafePass> passes) {
+    public StudyCafePass getSelectPass(StudyCafePasses passes) {
         String userInput = SCANNER.nextLine();
         int selectedIndex = Integer.parseInt(userInput) - 1;
         return passes.get(selectedIndex);
