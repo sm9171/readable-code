@@ -12,7 +12,7 @@ public class ConsoleInputHandler implements InputHandler {
 
     @Override
     public StudyCafePassType getPassTypeSelectingUserAction() {
-        String userInput = SCANNER.nextLine();
+        String userInput = getUserInput();
 
         if ("1".equals(userInput)) {
             return StudyCafePassType.HOURLY;
@@ -28,14 +28,23 @@ public class ConsoleInputHandler implements InputHandler {
 
     @Override
     public StudyCafePass getSelectPass(StudyCafePasses passes) {
-        String userInput = SCANNER.nextLine();
-        int selectedIndex = Integer.parseInt(userInput) - 1;
+        String userInput = getUserInput();
+        int selectedIndex = getSelectedIndex(userInput);
         return passes.get(selectedIndex);
     }
 
     @Override
     public boolean getLockerSelection() {
-        String userInput = SCANNER.nextLine();
+        String userInput = getUserInput();
         return "1".equals(userInput);
+    }
+
+    private static String getUserInput() {
+        String userInput = SCANNER.nextLine();
+        return userInput;
+    }
+
+    private static int getSelectedIndex(String userInput) {
+        return Integer.parseInt(userInput) - 1;
     }
 }
