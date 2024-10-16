@@ -21,6 +21,7 @@ public class StudyCafePassMachine {
                 StudyCafeFileHandler studyCafeFileHandler = new StudyCafeFileHandler();
                 StudyCafePasses studyCafePasses = studyCafeFileHandler.readStudyCafePasses();
                 StudyCafePasses hourlyPasses = studyCafePasses.getHourlyPasses();
+
                 outputHandler.showPassListForSelection(hourlyPasses);
                 StudyCafePass selectedPass = inputHandler.getSelectPass(hourlyPasses);
                 outputHandler.showPassOrderSummary(selectedPass, null);
