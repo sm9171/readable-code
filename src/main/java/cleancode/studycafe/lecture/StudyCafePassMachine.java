@@ -2,6 +2,7 @@ package cleancode.studycafe.lecture;
 
 import cleancode.studycafe.lecture.exception.AppException;
 import cleancode.studycafe.lecture.io.StudyCafeFileHandler;
+import cleancode.studycafe.lecture.model.order.StudyCafePassOrder;
 import cleancode.studycafe.lecture.model.pass.StudyCafePassType;
 import cleancode.studycafe.lecture.model.pass.locker.StudyCafeLockerPass;
 import cleancode.studycafe.lecture.model.pass.locker.StudyCafeLockerPasses;
@@ -21,13 +22,14 @@ public class StudyCafePassMachine {
             ioHandler.showAnnouncement();
 
             StudyCafeSeatPass selectedPass = selectPass();
-
             Optional<StudyCafeLockerPass> optionalLockerPass = selectLockerPass(selectedPass);
 
-            optionalLockerPass.ifPresentOrElse(
-                    lockerPass -> ioHandler.showPassOrderSummary(selectedPass, lockerPass),
-                    () -> ioHandler.showPassOrderSummary(selectedPass)
+            StudyCafePassOrder passOrder = StudyCafePassOrder.of(
+                    selectedPass,
+                    optionalLockerPass.orElse(null)
             );
+
+            ioHandler.showPassOrderSummary(passOrder);
         } catch (AppException e) {
             ioHandler.showSimpleMessage(e.getMessage());
         } catch (Exception e) {

@@ -2,6 +2,7 @@ package cleancode.studycafe.lecture;
 
 import cleancode.studycafe.lecture.io.InputHandler;
 import cleancode.studycafe.lecture.io.OutputHandler;
+import cleancode.studycafe.lecture.model.order.StudyCafePassOrder;
 import cleancode.studycafe.lecture.model.pass.locker.StudyCafeLockerPass;
 import cleancode.studycafe.lecture.model.pass.seat.StudyCafeSeatPass;
 import cleancode.studycafe.lecture.model.pass.StudyCafePassType;
@@ -21,12 +22,8 @@ public class StudyCafeIOHandler {
         outputHandler.showAnnouncement();
     }
 
-    public void showPassOrderSummary(StudyCafeSeatPass selectedPass, StudyCafeLockerPass lockerPass) {
-        outputHandler.showPassOrderSummary(selectedPass, lockerPass);
-    }
-
-    public void showPassOrderSummary(StudyCafeSeatPass selectedPass) {
-        outputHandler.showPassOrderSummary(selectedPass);
+    public void showPassOrderSummary(StudyCafePassOrder passOrder) {
+        outputHandler.showPassOrderSummary(passOrder);
     }
 
     public void showSimpleMessage(String message) {
